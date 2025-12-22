@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# Python artifacts
+__pycache__/
+*.py[cod]
+
 # Model artifacts
 *.pth
 backend/models/
