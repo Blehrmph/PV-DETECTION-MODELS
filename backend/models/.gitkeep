@@ -1,0 +1,5 @@
+# Models directory
+# Place your trained PyTorch models here:
+# - stage1_model.pth (Binary classification: Normal vs Faulty)
+# - stage2_model.pth (Group classification: 4 groups)  
+# - stage3_model.pth (Fine-grained classification: 12 classes)

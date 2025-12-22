@@ -1,0 +1,14 @@
+node_modules
+.venv
+__pycache__
+.git
+.env
+data
+datasets
+dist
+build
+*.log
+**/*.pth
+.pytest_cache
+.mypy_cache
+.DS_Store
