@@ -2,12 +2,10 @@ FROM node:20-alpine AS frontend-build
 
 WORKDIR /frontend
 
-COPY package.json package-lock.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
-COPY public/ public/
-COPY src/ src/
-COPY index.html vite.config.ts tsconfig*.json tailwind.config.ts postcss.config.js ./
+COPY frontend/ ./
 
 RUN npm run build
 

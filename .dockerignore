@@ -9,7 +9,6 @@ dist
 build
 *.log
 **/*.pth
-!backend/models/*.pth
 .pytest_cache
 .mypy_cache
 .DS_Store
