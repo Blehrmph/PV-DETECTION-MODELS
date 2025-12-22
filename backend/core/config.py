@@ -5,6 +5,7 @@ Configuration settings for the PV Fault Detection API.
 from pathlib import Path
 from typing import List
 import os
+import tempfile
 
 
 class Settings:
@@ -30,7 +31,14 @@ class Settings:
     # Model paths
     BASE_DIR: Path = Path(__file__).resolve().parent.parent
     MODEL_DIR: str | None = os.getenv("MODEL_DIR")
-    MODELS_DIR: Path = Path(MODEL_DIR) if MODEL_DIR else BASE_DIR / "models"
+    MODEL_CACHE_DIR: str | None = os.getenv("MODEL_CACHE_DIR")
+    MODELS_DIR: Path = (
+        Path(MODEL_DIR)
+        if MODEL_DIR
+        else Path(MODEL_CACHE_DIR)
+        if MODEL_CACHE_DIR
+        else Path(tempfile.gettempdir()) / "pv-models"
+    )
     
     # Model file names
     STAGE1_MODEL: str = "stage1_model.pth"

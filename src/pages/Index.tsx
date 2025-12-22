@@ -284,16 +284,19 @@ const Index = () => {
                 title: "Stage 1: Binary Detection",
                 description: "Classifies input as Healthy or Anomalous using a binary classification model.",
                 model: "stage1_model.pth",
+                modelUrl: "https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage1_model.pth",
               },
               {
                 title: "Stage 2: Group Classification",
                 description: "Categorizes anomalies into 4 groups: Hotspot, Obstruction, Cell-Defect, Electrical-Fault.",
                 model: "stage2_model.pth",
+                modelUrl: "https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage2_model.pth",
               },
               {
                 title: "Stage 3: Fine-Grained Analysis",
                 description: "Identifies the specific fault type among 11 possible classifications.",
                 model: "stage3_model.pth",
+                modelUrl: "https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage3_model.pth",
               },
             ].map((stage, index) => (
               <div
@@ -309,9 +312,14 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground mb-3">
                   {stage.description}
                 </p>
-                <code className="text-xs font-mono px-2 py-1 rounded bg-secondary text-muted-foreground">
+                <a
+                  href={stage.modelUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="text-xs font-mono px-2 py-1 rounded bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                >
                   {stage.model}
-                </code>
+                </a>
               </div>
             ))}
           </div>

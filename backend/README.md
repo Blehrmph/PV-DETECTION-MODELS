@@ -33,10 +33,18 @@ The API will be available at `http://localhost:8000`.
 
 ### Model Files
 
-Place your trained PyTorch models in the `models/` directory:
-- `stage1_model.pth` - Binary classification (Healthy vs Anomalous)
-- `stage2_model.pth` - Group classification (4 groups)
-- `stage3_model.pth` - Fine-grained classification (11 classes)
+Models are downloaded from Hugging Face by default and cached in a runtime directory
+(system temp or `MODEL_CACHE_DIR`). No `.pth` files are stored in the repo.
+
+Reference checkpoints:
+- `stage1_model.pth`: https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage1_model.pth
+- `stage2_model.pth`: https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage2_model.pth
+- `stage3_model.pth`: https://huggingface.co/Blehrmph/models-pv-project/resolve/main/stage3_model.pth
+
+Override sources (optional):
+- `MODEL_URL_BASE` or `STAGE*_MODEL_URL` to point at different URLs.
+- `MODEL_CACHE_DIR` to change the cache location.
+- `MODEL_DIR` to use a local folder (not recommended for deploys).
 
 Update the expected architectures in `backend/core/config.py` if you trained with different backbones. Defaults match the provided checkpoints (Swin Tiny):
 

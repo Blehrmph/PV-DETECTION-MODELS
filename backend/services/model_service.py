@@ -76,6 +76,8 @@ _PREPROCESS_TRANSFORM = transforms.Compose(
 )
 
 
+DEFAULT_MODEL_URL_BASE = "https://huggingface.co/Blehrmph/models-pv-project/resolve/main"
+
 # =============================================================================
 # MODEL LOADING
 # =============================================================================
@@ -106,7 +108,8 @@ def _resolve_model_url(model_path: Path, url_env: str) -> str | None:
     base_url = os.getenv("MODEL_URL_BASE")
     if base_url:
         return f"{base_url.rstrip('/')}/{model_path.name}"
-    return None
+    return f"{DEFAULT_MODEL_URL_BASE.rstrip('/')}/{model_path.name}"
+
 
 
 def _ensure_model_file(model_path: Path, url_env: str) -> None:
