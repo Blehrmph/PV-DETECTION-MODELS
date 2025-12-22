@@ -1,2 +1,3 @@
-﻿[deploy]
+[deploy]
+build.builder = "dockerfile"
 healthcheckPath = "/api/health"
