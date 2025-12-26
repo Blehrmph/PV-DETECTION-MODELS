@@ -21,10 +21,7 @@ app = FastAPI(
 # -----------------------------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "https://pv-detection-models-production.up.railway.app"
-    ],
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -39,8 +36,8 @@ if raw_prefix:
 else:
     api_prefix = ""
 app.include_router(router, prefix=api_prefix)
-# Also expose the same routes under "/api" when no prefix is configured.
-if not raw_prefix:
+# Always expose the routes under "/api" for the frontend, even if API_PREFIX differs.
+if api_prefix != "/api":
     app.include_router(router, prefix="/api")
 
 
